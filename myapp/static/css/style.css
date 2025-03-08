@@ -1,0 +1,36 @@
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.toolbar {
+    margin-bottom: 10px;
+}
+
+canvas {
+    border: 2px solid black;
+    background-color: white;
+    cursor: crosshair;
+    width: 90%;  /* %90 genişlik */
+    max-width: 800px;  /* Önceden 600px'di, şimdi 800px yaptık */
+    height: 500px;  /* Önceden 400px'di, şimdi 500px yaptık */
+}
+
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+input[type="range"], input[type="color"] {
+    margin-left: 5px;
+}

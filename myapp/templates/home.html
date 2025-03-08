@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Draw Test</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Çizim Alanı</h1>
+
+    <div class="toolbar">
+        <label>Kalınlık: </label>
+        <input type="range" id="brushSize" min="1" max="20" value="5">
+
+        <label>Renk: </label>
+        <input type="color" id="brushColor" value="#000000">
+    </div>
+
+    <canvas id="drawingCanvas"></canvas>
+    <br>
+    <button id="clearButton">Temizle</button>
+    <button id="saveButton">Kaydet</button>
+
+    <form id="saveForm" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" name="image" id="imageData">
+    </form>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
+
+
+{% if preprocessed_image_url %}
+    <h2>İşlenmiş Görüntü (Quick Draw Formatı)</h2>
+    <img src="{{ preprocessed_image_url }}" alt="Preprocessed Image" style="width: 256px; height: 256px; border: 2px solid black;">
+    <br>
+    <a href="{{ preprocessed_image_url }}" download="quickdraw.png">
+        <button>İndir</button>
+    </a>
+{% endif %}
+
